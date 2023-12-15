@@ -45,7 +45,8 @@ class ProxySmart:
     def _parse_modem(dct: dict) -> Modem:
         reset_secure_link = dct.get('RESET_SECURE_LINK')
         rotation_link = reset_secure_link.get('URL') if reset_secure_link else None
-        logger.warning(f"Failed parsing modem rotation link: {pprint.pformat(dct)}")
+        if not reset_secure_link:
+            logger.warning(f"Failed parsing modem rotation link: {pprint.pformat(dct)}")
         return Modem(imei=dct['modem_details']['IMEI'],
                      http=dct['proxy_creds']['HTTP_PORT'],
                      socks5=dct['proxy_creds']['SOCKS_PORT'],
