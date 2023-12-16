@@ -93,7 +93,7 @@ class ProxySmart:
                        auto_ip_rotation: int,
                        valid_before: datetime):
         form_data = {'IMEI': imei,
-                     'name': name + '1',
+                     'name': name,
                      'http_port': http,
                      'socks_port': socks,
                      'proxy_login': login,
